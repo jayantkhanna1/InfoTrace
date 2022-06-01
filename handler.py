@@ -1,4 +1,4 @@
-# sherlock
+# sherlock - check all features
 # email spoof
 # location from image
 # Name search
@@ -11,6 +11,7 @@
 # social media lookup
 # wifi cracking
 # password cracking md5,sha256,sha512 etc.
+
 from sherlock import Sherlock_Module
 print("Type help to see help menu")
 while(True):
@@ -53,7 +54,7 @@ while(True):
         """)
         sherlock = Sherlock_Module()
         while(True):
-            subcommand = input(">> Sherlock >>")
+            subcommand = input(">> Sherlock >> ")
             subcommand = subcommand.lower()
             subcommandarr = subcommand.split(' ')
             if subcommand == "exit sherlock" or subcommand == 'sherlock exit' or subcommand == "exit" or subcommand == "cd ..":
@@ -86,7 +87,7 @@ while(True):
                 
                 Use Sherlock
                     sherlock USERNAME : to search for a user 
-                    sherlock USERNAME --timeout TIME_IN_SECONDS : to specify time for each website to be searched for default is infinite
+                    sherlock USERNAME --timeout TIME_IN_SECONDS : to specify time for each website to be searched for default is 1 second
                 """)
             
             elif subcommandarr[0] == "sherlock":
@@ -101,12 +102,20 @@ while(True):
                             Spider is running please Wait...
                             """
                         )
-                        lst=sherlock.findUser(subcommandarr[1])
+                        lst=sherlock.findUser(name = subcommandarr[1])
+                        for x in lst:
+                            print(x)
+                    if len(subcommandarr) == 4 and subcommandarr[2] == "--timeout":
+                        print(
+                            """
+                            Spider is running please Wait...
+                            """
+                        )
+                        lst=sherlock.findUserTimeout(name = subcommandarr[1],time = subcommandarr[3])
                         for x in lst:
                             print(x)
 
             else:
-                # sherlock.findUser(subcommand)
                 print(
                     """
                     Invalid Command
