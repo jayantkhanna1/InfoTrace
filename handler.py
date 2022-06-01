@@ -1,6 +1,5 @@
-# sherlock - check all features
+
 # email spoof
-# location from image
 # Name search
 # phone number lookup
 # email lookup
@@ -12,12 +11,17 @@
 # wifi cracking
 # password cracking md5,sha256,sha512 etc.
 
-from sherlock import Sherlock_Module
-from metadata import MetaDataExtractor
+from Modules.sherlock import Sherlock_Module
+from Modules.metadata import MetaDataExtractor
+from Modules.iptogeo import IpLookup
 print("Type help to see help menu")
 while(True):
     command = input(">> ")
     command=command.lower().strip()
+
+
+
+
     if command == "help" or command == "h" or command == "?" or command == "--help" or command == "-h":
         print("""
         help:
@@ -30,6 +34,7 @@ while(True):
         Modules:
             1. sherlock : to get inside sherlock module and search for a username accross social media sites
             2. photoinfo : to get information such as gps coordinates etc. about the image
+            3. ipinfo : to get information regarding an ip address
         
         Get Current Directory Commands:
             pwd : to get current module
@@ -38,16 +43,27 @@ while(True):
             exit : exit the program
         """)
 
+
+
+
+
     elif command == "exit":
         print("""
         Goodbye! 
         """)
         break
     
+
+
+
     elif command == 'pwd':
         print("""
                 Main Menu
                 """)
+
+
+
+
 
     elif command == "sherlock" or command == "1":
         print("""
@@ -124,13 +140,17 @@ while(True):
                     """
                 )
     
+
+
+
+
     elif command == "photoinfo" or command == "2":
         meta = MetaDataExtractor()
         while(True):
             subcommand = input(">> PhotoInfo >> ")
             subcommand = subcommand.lower().strip()
             subcommandarr = subcommand.split(' ')
-            if subcommand == "exit PhotoInfo" or subcommand == 'PhotoInfo exit' or subcommand == "exit" or subcommand == "cd ..":
+            if subcommand == "exit photoinfo" or subcommand == 'photoinfo exit' or subcommand == "exit" or subcommand == "cd ..":
                 break
 
             elif subcommand == "pwd":
@@ -138,7 +158,7 @@ while(True):
                 PhotoInfo Module
                 """)
             
-            elif subcommand == "PhotoInfo --help" or subcommand == "PhotoInfo -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
+            elif subcommand == "photoinfo --help" or subcommand == "photoinfo -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
                 print("""
                 Details:
                     You are inside PhotoInfo module. A module to extract PhotoInfo from an image
@@ -176,12 +196,61 @@ while(True):
                         )
                         print(meta.extract(subcommandarr[1]))
             
+
+
+
+
+    elif command == 'iplookup' or command == '3':
+        iplookup = IpLookup()
+        while(True):
+            subcommand = input(">> Ip Lookup >> ")
+            subcommand = subcommand.lower().strip()
+            subcommandarr = subcommand.split(' ')
+            if subcommand == "exit iplookup" or subcommand == 'iplookup exit' or subcommand == "exit" or subcommand == "cd ..":
+                break
+
+            elif subcommand == "pwd":
+                print("""
+                Ip Lookup Module
+                """)
+            
+            elif subcommand == "iplookup --help" or subcommand == "iplookup -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
+                print("""
+                Details:
+                    You are inside Ip Lookup module. A module to get information relating to an ip address
+                
+                Help Menu:
+                    iplookup --help : show help menu for iplookup
+                    iplookup -h : show help menu for iplookup
+                    --help : show help menu for iplookup
+                    -h : show help menu for iplookup
+                    help : show help menu for iplookup
+                    h : show help menu for iplookup
+                    ? : show help menu for iplookup
+
+                Exit Ip Lookup:
+                    exit iplookup : exit iplookup module
+                    iplookup exit : exit iplookup module
+                    exit : exit iplookup module
+                    cd .. : exit iplookup module
+                
+                Use iplookup
+                    Ip_Address : to information relating to an ip address
+                """)
+
+
             else:
-                print(
-                    """
-                    Invalid Command
-                    """
-                )
+                from IPy import IP
+                try:
+                    IP(subcommand)
+                    result = iplookup.lookup(ip_address = subcommand)
+                    print(result)
+                except:
+                    print(
+                        """
+                        Invalid IP Address
+                        """
+                    )
 
 
     else:
