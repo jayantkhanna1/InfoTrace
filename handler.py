@@ -14,6 +14,8 @@
 from Modules.sherlock import Sherlock_Module
 from Modules.metadata import MetaDataExtractor
 from Modules.iptogeo import IpLookup
+from Modules.email_spoof import EmailSpoof
+
 print("Type help to see help menu")
 while(True):
     command = input(">> ")
@@ -35,6 +37,7 @@ while(True):
             1. sherlock : to get inside sherlock module and search for a username accross social media sites
             2. photoinfo : to get information such as gps coordinates etc. about the image
             3. ipinfo : to get information regarding an ip address
+            4. emailspoof : to Spoof an Email
         
         Get Current Directory Commands:
             pwd : to get current module
@@ -251,6 +254,86 @@ while(True):
                         Invalid IP Address
                         """
                     )
+
+
+
+
+    elif command == "emailspoof" or command == "4":
+        emailspoof = EmailSpoof()
+        while(True):
+            subcommand = input(">> Email Spoof >> ")
+            subcommand = subcommand.lower().strip()
+            subcommandarr = subcommand.split(' ')
+            if subcommand == "exit emailspoof" or subcommand == 'emailspoof exit' or subcommand == "exit" or subcommand == "cd ..":
+                break
+
+            elif subcommand == "pwd":
+                print("""
+                Ip Lookup Module
+                """)
+            
+            elif subcommand == "emailspoof --help" or subcommand == "emailspoof -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
+                print("""
+                Details:
+                    You are inside Email Spoofing module. You can spoof any email with help of this module
+                
+                Help Menu:
+                    emailspoof --help : show help menu for emailspoof
+                    emailspoof -h : show help menu for emailspoof
+                    --help : show help menu for emailspoof
+                    -h : show help menu for emailspoof
+                    help : show help menu for emailspoof
+                    h : show help menu for emailspoof
+                    ? : show help menu for emailspoof
+
+                Exit Ip Lookup:
+                    exit emailspoof : exit emailspoof module
+                    emailspoof exit : exit emailspoof module
+                    exit : exit emailspoof module
+                    cd .. : exit emailspoof module
+                
+                Use emailspoof
+                    emailspoof --sendername SENDER_NAME --senderemail SENDER_EMAIL --toemail RECIEVER_EMAIL  : to information relating to an ip address
+                """)
+
+
+            elif subcommandarr[0] == "emailspoof":
+                if len(subcommandarr) > 2:
+                    try:
+                        sendername = subcommandarr[subcommandarr.index("--sendername")+1]
+                    except:
+                        sendername = None
+
+                    try:
+                        senderemail = subcommandarr[subcommandarr.index("--senderemail")+1]
+                    except:
+                        senderemail = None
+
+                    try:
+                        toemail = subcommandarr[subcommandarr.index("--toemail")+1]
+                    except:
+                        toemail = None
+                    
+                    if senderemail == None :
+                        print("""
+                        Please enter Sender email
+                        """)
+                    if sendername == None :
+                        print("""
+                        Please enter Sender name
+                        """)
+                    if toemail == None :
+                        print("""
+                        Please enter Reciever email
+                        """)
+
+            else:
+                print(
+                        """
+                        Invalid Command
+                        """
+                    )
+
 
 
     else:
