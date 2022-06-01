@@ -13,6 +13,7 @@
 # password cracking md5,sha256,sha512 etc.
 
 from sherlock import Sherlock_Module
+from metadata import MetaDataExtractor
 print("Type help to see help menu")
 while(True):
     command = input(">> ")
@@ -28,6 +29,7 @@ while(True):
 
         Modules:
             1. sherlock : to get inside sherlock module and search for a username accross social media sites
+            2. photoinfo : to get information such as gps coordinates etc. about the image
         
         Get Current Directory Commands:
             pwd : to get current module
@@ -55,7 +57,7 @@ while(True):
         sherlock = Sherlock_Module()
         while(True):
             subcommand = input(">> Sherlock >> ")
-            subcommand = subcommand.lower()
+            subcommand = subcommand.lower().strip()
             subcommandarr = subcommand.split(' ')
             if subcommand == "exit sherlock" or subcommand == 'sherlock exit' or subcommand == "exit" or subcommand == "cd ..":
                 break
@@ -121,5 +123,66 @@ while(True):
                     Invalid Command
                     """
                 )
+    
+    elif command == "photoinfo" or command == "2":
+        meta = MetaDataExtractor()
+        while(True):
+            subcommand = input(">> PhotoInfo >> ")
+            subcommand = subcommand.lower().strip()
+            subcommandarr = subcommand.split(' ')
+            if subcommand == "exit PhotoInfo" or subcommand == 'PhotoInfo exit' or subcommand == "exit" or subcommand == "cd ..":
+                break
+
+            elif subcommand == "pwd":
+                print("""
+                PhotoInfo Module
+                """)
+            
+            elif subcommand == "PhotoInfo --help" or subcommand == "PhotoInfo -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
+                print("""
+                Details:
+                    You are inside PhotoInfo module. A module to extract PhotoInfo from an image
+                
+                Help Menu:
+                    PhotoInfo --help : show help menu for PhotoInfo
+                    PhotoInfo -h : show help menu for PhotoInfo
+                    --help : show help menu for PhotoInfo
+                    -h : show help menu for PhotoInfo
+                    help : show help menu for PhotoInfo
+                    h : show help menu for PhotoInfo
+                    ? : show help menu for PhotoInfo
+
+                Exit PhotoInfo:
+                    exit PhotoInfo : exit PhotoInfo module
+                    PhotoInfo exit : exit PhotoInfo module
+                    exit : exit PhotoInfo module
+                    cd .. : exit PhotoInfo module
+                
+                Use PhotoInfo
+                    PhotoInfo IMAGE_PATH : to extract PhotoInfo from an image
+                """)
+
+            elif subcommandarr[0] == "photoinfo":
+                if len(subcommandarr) == 1:
+                    print("""
+                    Please enter an image path
+                    """)
+                else:
+                    if len(subcommandarr) == 2:
+                        print(
+                            """
+                            Extracting Information from image
+                            """
+                        )
+                        print(meta.extract(subcommandarr[1]))
+            
+            else:
+                print(
+                    """
+                    Invalid Command
+                    """
+                )
+
+
     else:
         print("Command not found") 
