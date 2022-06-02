@@ -293,7 +293,7 @@ while(True):
                     cd .. : exit emailspoof module
                 
                 Use emailspoof
-                    emailspoof --sendername SENDER_NAME --senderemail SENDER_EMAIL --toemail RECIEVER_EMAIL  : to information relating to an ip address
+                    emailspoof --password PASSWORD_OF_REAL_EMAIL --realemail EMAIL_OF_PERSON_ACTUALLY_SENDING --sendername SENDER_NAME --senderemail SENDER_EMAIL --toemail RECIEVER_EMAIL --toname RECIEVER_NAME --subject SUBJECT --message MESSAGE : to information relating to an ip address
                 """)
 
 
@@ -314,18 +314,64 @@ while(True):
                     except:
                         toemail = None
                     
+                    try:
+                        subject = subcommandarr[subcommandarr.index("--subject")+1]
+                    except:
+                        subject = None
+
+                    try:
+                        message = subcommandarr[subcommandarr.index("--message")+1]
+                    except:
+                        message = None
+
+                    try:
+                        realemail = subcommandarr[subcommandarr.index("--realemail")+1]
+                    except:
+                        realemail = None
+
+                    try:
+                        realpassword = subcommandarr[subcommandarr.index("--password")+1]
+                    except:
+                        realpassword = None
+
+                    try:
+                        toname = subcommandarr[subcommandarr.index("--toname")+1]
+                    except:
+                        toname = None
                     if senderemail == None :
                         print("""
                         Please enter Sender email
                         """)
-                    if sendername == None :
+                    elif sendername == None :
                         print("""
                         Please enter Sender name
                         """)
-                    if toemail == None :
+                    elif toemail == None :
                         print("""
                         Please enter Reciever email
                         """)
+                    elif subject == None :
+                        print("""
+                        Please enter Subject
+                        """)
+                    elif message == None :
+                        print("""
+                        Please enter Message
+                        """)
+                    elif realemail == None :
+                        print("""
+                        Please enter Real Email
+                        """)
+                    elif realpassword == None :
+                        print("""
+                        Please enter Real Email Password
+                        """)
+                    elif toname == None :
+                        print("""
+                        Please enter correct Reciever name
+                        """)
+                    else:
+                        emailspoof.spoof(toname=toname,realemail= realemail,realemailpassword= realpassword ,senderemail=senderemail, sendername= sendername, toemail = toemail, subject = subject, message = message)
 
             else:
                 print(
@@ -338,3 +384,6 @@ while(True):
 
     else:
         print("Command not found") 
+
+
+#emailspoof --toemail jayantkhanna3105@gmail.com --toname Jayant_Khanna --sendername Jayant_Khanna --senderemail jayantkhanna31052002@gmail.com --message Hello_There_Mate --subject Subject --realemail jayantkhannaofficial@gmail.com --password icdgjxokvhtsvfex
