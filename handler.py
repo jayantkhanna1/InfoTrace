@@ -258,7 +258,10 @@ while(True):
 
 
 
+    
     elif command == "emailspoof" or command == "4":
+        # Remove when email spoofer starts working
+        continue
         emailspoof = EmailSpoof()
         while(True):
             subcommand = input(">> Email Spoof >> ")
@@ -379,11 +382,7 @@ while(True):
                         Invalid Command
                         """
                     )
-
-
-
+    
     else:
         print("Command not found") 
 
-
-#emailspoof --toemail jayantkhanna3105@gmail.com --toname Jayant_Khanna --sendername Jayant_Khanna --senderemail jayantkhanna31052002@gmail.com --message Hello_There_Mate --subject Subject --realemail jayantkhannaofficial@gmail.com --password icdgjxokvhtsvfex
