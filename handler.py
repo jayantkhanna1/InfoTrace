@@ -1,20 +1,19 @@
-
-# email spoof
-# Name search
 # phone number lookup
 # email lookup
-# ip lookup
 # domain lookup
 # url lookup
 # hash lookup
-# social media lookup
-# wifi cracking
+# Social Media find all posts comments relating to a keyword (Twitter Discord Reddit 4chan Facebook Instagram)
 # password cracking md5,sha256,sha512 etc.
+# File malicious or not
+# Get a remote connection
+# Image similarity
+# Search a keyword on tor
 
 from Modules.sherlock import Sherlock_Module
 from Modules.metadata import MetaDataExtractor
 from Modules.iptogeo import IpLookup
-from Modules.email_spoof import EmailSpoof
+from Modules.phonenumberlookup import PhoneNumber
 
 print("Type help to see help menu")
 while(True):
@@ -34,10 +33,10 @@ while(True):
             -h : show help menu
 
         Modules:
-            1. sherlock : to get inside sherlock module and search for a username accross social media sites
+            1. personinfo : to get inside personinfo module and search for a username accross social media sites
             2. photoinfo : to get information such as gps coordinates etc. about the image
             3. ipinfo : to get information regarding an ip address
-            4. emailspoof : to Spoof an Email
+            4. phoneinfo : to get information regarding phonen number
         
         Get Current Directory Commands:
             pwd : to get current module
@@ -68,50 +67,50 @@ while(True):
 
 
 
-    elif command == "sherlock" or command == "1":
+    elif command == "personinfo" or command == "1":
         print("""
-        sherlock - A module to search for a user on multiple websites
-        Enter Sherlock --help to see complete help menu for sherlock
+        personinfo - A module to search for a user on multiple websites
+        Enter personinfo --help to see complete help menu for personinfo
         """)
-        sherlock = Sherlock_Module()
+        personinfo = Sherlock_Module()
         while(True):
-            subcommand = input(">> Sherlock >> ")
+            subcommand = input(">> personinfo >> ")
             subcommand = subcommand.lower().strip()
             subcommandarr = subcommand.split(' ')
-            if subcommand == "exit sherlock" or subcommand == 'sherlock exit' or subcommand == "exit" or subcommand == "cd ..":
+            if subcommand == "exit personinfo" or subcommand == 'personinfo exit' or subcommand == "exit" or subcommand == "cd ..":
                 break
 
             elif subcommand == "pwd":
                 print("""
-                sherlock Module
+                personinfo Module
                 """)
  
-            elif subcommand == "sherlock --help" or subcommand == "sherlock -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?": 
+            elif subcommand == "personinfo --help" or subcommand == "personinfo -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?": 
                 print("""
                 Details:
-                    You are inside sherlock module. A module to search for a user on multiple websites
+                    You are inside personinfo module. A module to search for a user on multiple websites
                 
                 Help Menu:
-                    sherlock --help : show help menu for sherlock
-                    sherlock -h : show help menu for sherlock
-                    --help : show help menu for sherlock
-                    -h : show help menu for sherlock
-                    help : show help menu for sherlock
-                    h : show help menu for sherlock
-                    ? : show help menu for sherlock
+                    personinfo --help : show help menu for personinfo
+                    personinfo -h : show help menu for personinfo
+                    --help : show help menu for personinfo
+                    -h : show help menu for personinfo
+                    help : show help menu for personinfo
+                    h : show help menu for personinfo
+                    ? : show help menu for personinfo
 
-                Exit sherlock:
-                    exit sherlock : exit sherlock module
-                    sherlock exit : exit sherlock module
-                    exit : exit sherlock module
-                    cd .. : exit sherlock module
+                Exit personinfo:
+                    exit personinfo : exit personinfo module
+                    personinfo exit : exit personinfo module
+                    exit : exit personinfo module
+                    cd .. : exit personinfo module
                 
-                Use Sherlock
-                    sherlock USERNAME : to search for a user 
-                    sherlock USERNAME --timeout TIME_IN_SECONDS : to specify time for each website to be searched for default is 1 second
+                Use personinfo
+                    personinfo USERNAME : to search for a user 
+                    personinfo USERNAME --timeout TIME_IN_SECONDS : to specify time for each website to be searched for default is 1 second
                 """)
             
-            elif subcommandarr[0] == "sherlock":
+            elif subcommandarr[0] == "personinfo":
                 if len(subcommandarr) == 1:
                     print("""
                     Please enter a username
@@ -123,7 +122,7 @@ while(True):
                             Spider is running please Wait...
                             """
                         )
-                        lst=sherlock.findUser(name = subcommandarr[1])
+                        lst=personinfo.findUser(name = subcommandarr[1])
                         for x in lst:
                             print(x)
                     if len(subcommandarr) == 4 and subcommandarr[2] == "--timeout":
@@ -132,7 +131,7 @@ while(True):
                             Spider is running please Wait...
                             """
                         )
-                        lst=sherlock.findUserTimeout(name = subcommandarr[1],time = subcommandarr[3])
+                        lst=personinfo.findUserTimeout(name = subcommandarr[1],time = subcommandarr[3])
                         for x in lst:
                             print(x)
 
@@ -259,123 +258,64 @@ while(True):
 
 
     
-    elif command == "emailspoof" or command == "4":
-        # Remove when email spoofer starts working
-        continue
-        emailspoof = EmailSpoof()
+    elif command == "phoneinfo" or command == "4":
         while(True):
-            subcommand = input(">> Email Spoof >> ")
+            subcommand = input(">> Phone Info >> ")
             subcommand = subcommand.lower().strip()
             subcommandarr = subcommand.split(' ')
-            if subcommand == "exit emailspoof" or subcommand == 'emailspoof exit' or subcommand == "exit" or subcommand == "cd ..":
+            if subcommand == "exit phoneinfo" or subcommand == 'phoneinfo exit' or subcommand == "exit" or subcommand == "cd ..":
                 break
 
             elif subcommand == "pwd":
                 print("""
-                Ip Lookup Module
+                 Phone Number Informa Module
                 """)
             
-            elif subcommand == "emailspoof --help" or subcommand == "emailspoof -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
+            elif subcommand == "phoneinfo --help" or subcommand == "phoneinfo -h" or subcommand == "--help" or subcommand == "-h" or subcommand == "help" or subcommand == "h" or subcommand == "?":
                 print("""
                 Details:
-                    You are inside Email Spoofing module. You can spoof any email with help of this module
+                    You are inside Phone Number Information module. You can find information about any phonenumber with help of this module
                 
                 Help Menu:
-                    emailspoof --help : show help menu for emailspoof
-                    emailspoof -h : show help menu for emailspoof
-                    --help : show help menu for emailspoof
-                    -h : show help menu for emailspoof
-                    help : show help menu for emailspoof
-                    h : show help menu for emailspoof
-                    ? : show help menu for emailspoof
+                    phoneinfo --help : show help menu for phoneinfo
+                    phoneinfo -h : show help menu for phoneinfo
+                    --help : show help menu for phoneinfo
+                    -h : show help menu for phoneinfo
+                    help : show help menu for phoneinfo
+                    h : show help menu for phoneinfo
+                    ? : show help menu for phoneinfo
 
                 Exit Ip Lookup:
-                    exit emailspoof : exit emailspoof module
-                    emailspoof exit : exit emailspoof module
-                    exit : exit emailspoof module
-                    cd .. : exit emailspoof module
+                    exit phoneinfo : exit phoneinfo module
+                    phoneinfo exit : exit phoneinfo module
+                    exit : exit phoneinfo module
+                    cd .. : exit phoneinfo module
                 
-                Use emailspoof
-                    emailspoof --password PASSWORD_OF_REAL_EMAIL --realemail EMAIL_OF_PERSON_ACTUALLY_SENDING --sendername SENDER_NAME --senderemail SENDER_EMAIL --toemail RECIEVER_EMAIL --toname RECIEVER_NAME --subject SUBJECT --message MESSAGE : to information relating to an ip address
+                Use phoneinfo
+                    phoneinfo PHONE_NUMBER : to get information about a phone number
                 """)
 
 
-            elif subcommandarr[0] == "emailspoof":
-                if len(subcommandarr) > 2:
-                    try:
-                        sendername = subcommandarr[subcommandarr.index("--sendername")+1]
-                    except:
-                        sendername = None
-
-                    try:
-                        senderemail = subcommandarr[subcommandarr.index("--senderemail")+1]
-                    except:
-                        senderemail = None
-
-                    try:
-                        toemail = subcommandarr[subcommandarr.index("--toemail")+1]
-                    except:
-                        toemail = None
-                    
-                    try:
-                        subject = subcommandarr[subcommandarr.index("--subject")+1]
-                    except:
-                        subject = None
-
-                    try:
-                        message = subcommandarr[subcommandarr.index("--message")+1]
-                    except:
-                        message = None
-
-                    try:
-                        realemail = subcommandarr[subcommandarr.index("--realemail")+1]
-                    except:
-                        realemail = None
-
-                    try:
-                        realpassword = subcommandarr[subcommandarr.index("--password")+1]
-                    except:
-                        realpassword = None
-
-                    try:
-                        toname = subcommandarr[subcommandarr.index("--toname")+1]
-                    except:
-                        toname = None
-                    if senderemail == None :
-                        print("""
-                        Please enter Sender email
-                        """)
-                    elif sendername == None :
-                        print("""
-                        Please enter Sender name
-                        """)
-                    elif toemail == None :
-                        print("""
-                        Please enter Reciever email
-                        """)
-                    elif subject == None :
-                        print("""
-                        Please enter Subject
-                        """)
-                    elif message == None :
-                        print("""
-                        Please enter Message
-                        """)
-                    elif realemail == None :
-                        print("""
-                        Please enter Real Email
-                        """)
-                    elif realpassword == None :
-                        print("""
-                        Please enter Real Email Password
-                        """)
-                    elif toname == None :
-                        print("""
-                        Please enter correct Reciever name
-                        """)
-                    else:
-                        emailspoof.spoof(toname=toname,realemail= realemail,realemailpassword= realpassword ,senderemail=senderemail, sendername= sendername, toemail = toemail, subject = subject, message = message)
-
+            elif subcommandarr[0] == "phoneinfo":
+                phoninfo = PhoneNumber()
+                if len(subcommandarr) == 1:
+                    print("""
+                    Please enter a phone number
+                    """)
+                else:
+                    if len(subcommandarr) == 2:
+                        print(
+                            """
+                            Extracting Information from phone number
+                            """
+                        )
+                        data = phoninfo.subhandler(subcommandarr[1])
+                        res = []
+                        for i in data:
+                                if i not in res:
+                                    res.append(i)
+                        for x in res:  
+                            print(x)
             else:
                 print(
                         """
